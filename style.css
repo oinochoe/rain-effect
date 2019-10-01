@@ -1,0 +1,79 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background: #000000;
+  overflow: hidden;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contents {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1000px;
+  max-height: 1000px;
+  overflow: hidden;
+}
+
+.button_wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px 20px;
+}
+
+.btn_audio {
+  width: 34px;
+  height: 34px;
+  text-indent: -9999px;
+  font-size: 1px;
+  opacity: 0.5;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn_audio.on {
+  background-image: url("./assets/audio.png");
+}
+
+.btn_audio.off {
+  background-image: url("./assets/mute.png");
+}
+
+.btn_audio.hide {
+  display: none;
+}
+
+.img_audio {
+  width: 100%;
+}

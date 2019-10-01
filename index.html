@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rain Effect</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Rain Effect" />
+    <meta property="og:description" content="raniy effect" />
+    <meta property="og:image" content="assets/smoke.png" />
+    <meta property="og:url" content="https://oinochoe.github.io/rain-effect/" />
+    <link rel="stylesheet" href="./style.min.css" />
+    <script src="assets/three.min.js"></script>
+  </head>
+  <body>
+    <main id="app" class="contents">
+      <aside class="button_wrap">
+        <button type="button" id="btnAudioOn" class="btn_audio on hide">
+          사운드 켜기
+        </button>
+        <button type="button" id="btnAudioOff" class="btn_audio off">
+          사운드 끄기
+        </button>
+      </aside>
+    </main>
+    <script src="rainy.min.js"></script>
+    <script>
+      setTimeout(() => {
+        const rain = new Rain({
+          app: document.querySelector("#app"),
+          resource: {
+            smoke: "assets/smoke.png",
+            drops: "assets/drop.png",
+            sound: "assets/audio.wav"
+          }
+        });
+        const mobileDevice = [
+          "iPhone",
+          "iPod",
+          "BlackBerry",
+          "Android",
+          "Windows CE",
+          "LG",
+          "MOT",
+          "SAMSUNG",
+          "SonyEricsson",
+          "Windows Phone"
+        ];
+        let triggerEvent = "click";
+
+        for (let device in mobileDevice) {
+          if (navigator.userAgent.match(mobileDevice[device])) {
+            triggerEvent = "touchend";
+          }
+        }
+
+        const btnAudioOn = document.querySelector("#btnAudioOn");
+        const btnAudioOff = document.querySelector("#btnAudioOff");
+
+        btnAudioOn.addEventListener(triggerEvent, el => {
+          rain.mute(true);
+          btnAudioOn.classList.add("hide");
+          btnAudioOff.classList.remove("hide");
+          el.stopPropagation();
+        });
+
+        btnAudioOff.addEventListener(triggerEvent, el => {
+          rain.mute(false);
+          btnAudioOn.classList.remove("hide");
+          btnAudioOff.classList.add("hide");
+          el.stopPropagation();
+        });
+      }, 500);
+    </script>
+  </body>
+</html>
