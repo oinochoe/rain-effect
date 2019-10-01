@@ -1,11 +1,11 @@
 class Rain {
-  constructor({ app, resource: { smoke, drop, sound } }) {
+  constructor({ app, resource: { smoke, drops, sound } }) {
     this.app = app;
     this.size = {
       width: Math.min(app.clientWidth, 1000),
       height: Math.min(app.clientHeight, 1000)
     };
-    this.resource = { smoke, drop, sound };
+    this.resource = { smoke, drops, sound };
     this.color = {
       fog: 0x111111,
       drop: 0xffeeee,
@@ -151,14 +151,14 @@ class Rain {
 
   getRainMeterial() {
     const {
-      resource: { drop },
+      resource: { drops },
       color
     } = this;
 
     return new THREE.PointsMaterial({
-      color: color.drop,
+      color: color.drops,
       size: 1,
-      map: this.loader.load(drop),
+      map: this.loader.load(drops),
       depthTest: false,
       blending: THREE.AdditiveBlending,
       opacity: 0.7,
